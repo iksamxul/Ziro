@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ziro — Privacy</title>
+<style>
+body{max-width:760px;margin:60px auto;padding:24px;background:#f5f5f7;color:#17171c;font:16px/1.65 system-ui}
+a{color:#6044b8}
+h1{margin:28px 0 8px;font-size:2.2rem;line-height:1.15;letter-spacing:-0.02em}
+h2{margin:36px 0 6px;font-size:1.25rem;line-height:1.3}
+p,li{text-wrap:pretty}
+ul{padding-left:1.2em}
+li{margin:6px 0}
+.lead{color:#55555c;font-size:1.08rem}
+.fine{color:#6e6e73;font-size:0.9rem}
+@media (prefers-color-scheme:dark){body{background:#0b0b0f;color:#f2f2f5}a{color:#b9a4ff}.lead{color:#b4b4bb}.fine{color:#a1a1a6}}
+</style>
+</head>
+<body>
+<a href="./">← Back to Ziro</a>
+<h1>Privacy</h1>
+<p class="lead">Ziro has no account, no ads, no analytics and no server of its own. It works on your device, and asks a few public services only for what it needs to show the lyrics, the weather or an update. This page says exactly what, and how to turn each thing off.</p>
+
+<h2>What Ziro listens to</h2>
+<ul>
+<li><strong>The sound your PC plays (Windows).</strong> While <em>Listen to what's playing</em> is on, Ziro hears what the PC plays, to line the lyrics up with the singer and move the looks with the music. It never uses the microphone.</li>
+<li>The sound is analysed inside Ziro, on your PC. What comes out of the analysis is numbers: how loud it is, the beat, and when the voice comes in. Sound is never stored or sent, except in clips you record yourself, which are saved on your PC with its sound.</li>
+<li><strong>What's playing.</strong> Ziro reads the song, its position and its cover from your player: on Windows from the system's media controls, on macOS by asking Spotify and Apple Music, and on Android through notification access. The macOS and Android apps don't hear any sound.</li>
+</ul>
+
+<h2>What it sends, and to whom</h2>
+<ul>
+<li><strong>Lyrics services</strong>, when a song starts:
+<ul>
+<li><strong>LRCLIB</strong> (lrclib.net) gets the song's title, artist, album and length, or the number of a lyrics record when Ziro fetches a version again.</li>
+<li><strong>The AMLL TTML database</strong>, on GitHub: Ziro downloads its index at most once a week and searches it on your device. GitHub then gets only the names of the lyrics files that match.</li>
+<li><strong>NetEase Cloud Music, QQ Music and Kugou</strong> get the song's title and artist, and Kugou its length too, through their unofficial interfaces.</li>
+<li>A search in <em>Find lyrics</em> sends the words you type.</li>
+</ul></li>
+<li><strong>Open-Meteo</strong>, only while the weather under Poster's clock is on (it's off until you turn it on): the coordinates of the city you picked, rounded to about a kilometre, about every 30 minutes. Finding the city sends the name you type to Open-Meteo's place search. Ziro never asks where you are.</li>
+<li><strong>Spotify</strong>, only when you use the Crate. Pasting a Spotify link or dragging songs in asks Spotify's public pages (open.spotify.com) about that song, album or playlist by its id, for its title, artist and cover, and fetches the cover from Spotify's image server. Each is asked once and kept on your device; nothing about you is sent, and Ziro doesn't sign in to do this. Dropping a song on the stage hands that song's link to the Spotify app on your device, which plays it. If you choose <em>Sign in with Spotify</em> (advanced), you sign in on Spotify's own page in your browser with a Spotify app of your own; Ziro then asks Spotify for your playlists and Liked Songs when you pick them into the crate, and asks Spotify to start the song you drop. The sign-in is kept encrypted on your device and is sent only to Spotify.</li>
+<li><strong>GitHub</strong>, for updates and fonts, only when you ask: <em>Check for updates</em> asks for the latest release, and downloading an update or one of the extra typefaces fetches that file.</li>
+<li><strong>Spotify's image server</strong>, on macOS: the album cover Spotify points to.</li>
+<li>Nothing else. There is no telemetry and no crash reporting. As with any request on the internet, each service sees your IP address.</li>
+</ul>
+
+<h2>What it keeps on your device</h2>
+<ul>
+<li>Your settings, your looks, what you set for each song (its timing nudge, its look, the lyrics you picked) and a short list of the last songs played.</li>
+<li>The LyricZir library: the lyrics Ziro has found, so the next play is instant and works offline. Timing you save yourself, and timing Ziro learns by listening.</li>
+<li>AMLL's index, the typefaces you downloaded, and a downloaded update until it's installed.</li>
+<li>The Crate: the songs you linked and their covers, and your Spotify sign-in, encrypted, if you signed in.</li>
+<li>A small log of what Ziro did, for finding problems. It stays on your PC.</li>
+<li>Videos, clips and line cards you make, in your Videos and Pictures folders.</li>
+<li><strong>Timing evidence</strong>, only while you switch it on (<em>Record timing evidence</em> in the command palette, Windows): numbers for measuring how well Ziro times lyrics, for the latest 60 plays. Never audio, titles, artists or words, but the lines' timing is the song's own, so share the files as you would your listening history.</li>
+<li>None of it leaves your device by itself. On Windows it lives in <code>%APPDATA%\Ziro</code>.</li>
+</ul>
+
+<h2>How to turn each thing off</h2>
+<ul>
+<li><strong>Listening:</strong> Settings › Sync › <em>Listen to what's playing</em>. Auto-sync and Word Lock need it.</li>
+<li><strong>Lyrics services:</strong> Settings › Sync › <em>Ask music services too</em> stops NetEase Cloud Music, QQ Music and Kugou. <em>Find lyrics online</em> stops every lookup: Ziro then shows only the lyrics already in its library and your own files.</li>
+<li><strong>The library:</strong> Settings › Sync › <em>Clear library</em>. Your own timing and picks stay.</li>
+<li><strong>Weather:</strong> Settings › Design › Clock and utilities › <em>Weather</em>.</li>
+<li><strong>The Crate:</strong> nothing is asked of Spotify until you paste, drag or drop a song. Settings › App › Crate has <em>Sign out</em> and <em>Clear the crate</em>, which removes the linked songs and their saved covers.</li>
+<li><strong>Timing evidence:</strong> <em>Stop recording timing evidence</em> in the command palette (Ctrl+K).</li>
+<li><strong>Android:</strong> notification access can be taken back at any time in Android's settings.</li>
+<li>Updates and typefaces are only fetched when you ask, so there's nothing to turn off.</li>
+</ul>
+
+<p class="fine">This website asks GitHub for the latest release to point its download buttons at it, and uses no analytics or cookies. It remembers the theme you pick in your browser.</p>
+</body>
+</html>
